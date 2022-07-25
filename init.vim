@@ -19,10 +19,14 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
+set relativenumber
 " window movement
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
+
+" chapter 10 - Training your fingers - Learn vimscript the hard way
+inoremap jk <esc>
+inoremap <esc> <nop>
 
 lua << EOF
 require("scrollbar").setup({
