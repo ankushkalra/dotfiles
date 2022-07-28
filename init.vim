@@ -5,6 +5,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'petertriho/nvim-scrollbar'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -27,6 +29,9 @@ nnoremap <c-h> <c-w>h
 " chapter 10 - Training your fingers - Learn vimscript the hard way
 inoremap jk <esc>
 inoremap <esc> <nop>
+
+" Nerd tree toggle
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 lua << EOF
 require("scrollbar").setup({
