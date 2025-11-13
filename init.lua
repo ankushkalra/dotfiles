@@ -5,6 +5,7 @@ require("config.telescope")
 require("config.gitsigns")
 require("config.lsp")
 require("config.term")
+require("config.conform")
 
 -- Lua
 vim.o.termguicolors = true -- Enable true color support
