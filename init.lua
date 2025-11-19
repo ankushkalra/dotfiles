@@ -6,6 +6,7 @@ require("config.gitsigns")
 require("config.lsp")
 require("config.term")
 require("config.conform")
+require("config.vim-fugitive")
 
 -- Lua
 vim.o.termguicolors = true -- Enable true color support
