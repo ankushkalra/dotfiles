@@ -6,4 +6,4 @@ function theme(theme)
   end
 end
 
-theme("tokyonight")
+theme("vscode")
