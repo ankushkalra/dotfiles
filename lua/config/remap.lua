@@ -9,6 +9,14 @@ vim.cmd([[
   nnoremap <leader>c d/[A-Z]<CR>:noh<CR>
 ]])
 
+-- Gitsigns shortcuts
+vim.cmd([[
+	nnoremap <leader>gn :Gitsigns next_hunk<cr>
+	nnoremap <leader>gN :Gitsigns prev_hunk<cr>
+	nnoremap <leader>gp :Gitsigns preview_hunk<cr>
+	nnoremap <leader>gs :Gitsigns stage_hunk<cr>
+]])
+
 vim.cmd([[
 	imap jk <esc>
 	nnoremap <leader>ev :vsplit $MYVIMRC<cr>
