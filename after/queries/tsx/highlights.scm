@@ -41,3 +41,16 @@
   (#set! "priority" 120)
 )
 
+
+; extends
+
+; Use a unique capture name and force the priority
+("export" @keyword.export_custom (#set! "priority" 127))
+
+; extends
+
+; Target only the name of the tag, not the attributes
+(jsx_opening_element name: (_) @tag (#set! "priority" 127))
+(jsx_closing_element name: (_) @tag (#set! "priority" 127))
+(jsx_self_closing_element name: (_) @tag (#set! "priority" 127))
+
