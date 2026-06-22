@@ -19,3 +19,4 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.clipboard = "unnamedplus"
