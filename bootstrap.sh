@@ -14,3 +14,5 @@ else
 fi
 
 source install/common.sh
+
+echo "Setup completed successfully"
