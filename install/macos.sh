@@ -10,3 +10,6 @@ echo "Installing Node.js..."
 brew install node --yes
 echo "Installing neovim"
 brew install neovim --yes
+echo "Installing tmux"
+brew install tmux --yes
+

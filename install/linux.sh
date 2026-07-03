@@ -12,3 +12,6 @@ sudo apt install nodejs npm -y
 
 echo "Installing neovim"
 sudo apt install neovim -y
+
+echo "Installing tmux"
+sudo apt install tmux -y
