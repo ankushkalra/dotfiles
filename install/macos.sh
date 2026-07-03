@@ -12,4 +12,7 @@ echo "Installing neovim"
 brew install neovim --yes
 echo "Installing tmux"
 brew install tmux --yes
-
+echo "Installing ripgrep"
+brew install ripgrep --yes
+echo "Installing fd"
+brew install fd --yes

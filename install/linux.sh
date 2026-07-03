@@ -15,3 +15,12 @@ sudo apt install neovim -y
 
 echo "Installing tmux"
 sudo apt install tmux -y
+
+echo "Installing ripgrep"
+sudo apt install ripgrep -y
+
+echo "Installing fd-find"
+sudo apt install fd-find -y
+echo "Linking fd-find as fd"
+ln -s $(which fdfind) ~/.local/bin/fd
+echo "Make sure that \$HOME/.local/bin is in your \$PATH."
