@@ -54,3 +54,12 @@
 (jsx_closing_element name: (_) @tag (#set! "priority" 127))
 (jsx_self_closing_element name: (_) @tag (#set! "priority" 127))
 
+; extends
+
+; Give jsx attribute string values (e.g. class="foo") their own highlight
+; group so they can be colored differently from regular strings. Base
+; @string is applied at priority 100, so this must be higher to win.
+(jsx_attribute
+  (string) @string.jsx_attribute
+  (#set! "priority" 105))
+

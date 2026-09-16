@@ -3,7 +3,6 @@ vim.o.termguicolors = true -- Enable true color support
 
 local c = require("vscode.colors").get_colors()
 require("vscode").setup({
-  transparent = true,
   italic_comments = true,
   underline_links = true,
   disable_nvimtree_bg = true,

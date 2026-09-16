@@ -8,7 +8,7 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup {
         -- Add languages you want to enable here
-        ensure_installed = { 'javascript', 'typescript', 'tsx' },
+        ensure_installed = { 'javascript', 'typescript', 'tsx', 'python' },
         -- Highlight setup (required for syntax highlighting)
         highlight = {
           enable = true,

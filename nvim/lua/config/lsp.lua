@@ -25,11 +25,60 @@ cmp.setup({
   })
 })
 
-require('lspconfig').ts_ls.setup({
+local lspconfig = require('lspconfig')
+
+lspconfig.ts_ls.setup({
+  root_dir = require('lspconfig').util.root_pattern("tsconfig.json", "package.json", ".git"),
   init_options = {
+    hostInfo = "neovim",
     preferences = {
       -- Disables the automatic JSDoc/type prompt suggestions
       disableSuggestions = true,
     },
   },
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeParameterNameHints = "all"
+      }
+    },
+    javascript = {
+      validate = false
+    }
+  },
+  on_init = function(client)
+    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+  end,
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+  end
+})
+
+-- lspconfig.cssmodules_ls.setup({
+--   init_options = {
+--   }
+-- })
+
+-- lspconfig.vtsls.setup({
+--   root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
+--   settings = {
+--     typescript = {
+--       tsdk = "node_modules/typescript/lib", -- Force it to use your local project's compiler
+--       tsserver = {
+--         pluginEnable = true,
+--       }
+--     },
+--     javascript = {
+--       validate = false -- Avoid duplicate diagnostics if writing pure JS files
+--     }
+--   }
+-- })
+
+-- In case of multiple results in a find, this move teh cursor to selected and closes window maybe
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+    vim.keymap.set("n", "<CR>", "<CR><Cmd>cclose<CR>", opts)
+  end,
 })

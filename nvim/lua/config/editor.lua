@@ -1,6 +1,6 @@
 vim.cmd([[
 	set number
-    set relativenumber
+  set relativenumber
 ]])
 
 vim.opt.signcolumn = "yes"
