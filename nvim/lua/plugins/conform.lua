@@ -15,6 +15,8 @@ return {
     formatters_by_ft = {
       lua = getFormatters { "stylua" },
       c = getFormatters { "clang-format" },
+      css = getFormatters { "prettierd", "prettier", stop_after_first = true },
+      json = getFormatters { "prettierd", "prettier", stop_after_first = true },
       javascript = getFormatters { "prettierd", "prettier", stop_after_first = true },
       typescript = getFormatters { "prettierd", "prettier", stop_after_first = true },
       javascriptreact = getFormatters { "prettierd", "prettier", stop_after_first = true },
