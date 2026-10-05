@@ -25,9 +25,7 @@ cmp.setup({
   })
 })
 
-local lspconfig = require('lspconfig')
-
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
   root_dir = require('lspconfig').util.root_pattern("tsconfig.json", "package.json", ".git"),
   init_options = {
     hostInfo = "neovim",
@@ -53,6 +51,7 @@ lspconfig.ts_ls.setup({
     client.server_capabilities.documentFormattingProvider = false
   end
 })
+vim.lsp.enable("ts_ls")
 
 -- lspconfig.cssmodules_ls.setup({
 --   init_options = {
