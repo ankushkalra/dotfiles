@@ -9,18 +9,54 @@ return {
       -- Tell the server that we support autocompletion capabilities
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
+        settings = { Lua = { diagnostics = { globals = { "vim" } } } }
+      })
+
       -- Setup for JavaScript, TypeScript, and React (.js, .jsx, .ts, .tsx)
       -- Note: 'ts_ls' is the newer name for 'tsserver'
       vim.lsp.config("ts_ls", {
         capabilities = capabilities,
       })
-      vim.lsp.enable("ts_ls")
 
       -- Optional: Setup Tailwind CSS if you use it in frontend
       vim.lsp.config("tailwindcss", {
         capabilities = capabilities,
       })
-      vim.lsp.enable("tailwindcss")
+
+      vim.lsp.enable({ "lua_ls", "ts_ls", "tailwindcss" })
+
+      -- Format keymap
+      vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end)
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if not client then return end
+
+          local function is_fugitive(bufnr)
+            bufnr = bufnr or 0
+            local name = vim.api.nvim_buf_get_name(bufnr)
+            local ft = vim.bo[bufnr].filetype
+            return name:match("^fugitive://") ~= nil
+                or ft == "fugitive"
+                or ft == "fugitiveblame"
+                or ft == "git"
+          end
+
+          if client:supports_method('textDocument/formatting', args.buf) then
+            -- format the current buffer on save
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = args.buf,
+              callback = function()
+                if is_fugitive(args.buf) then return end
+                vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+              end,
+            })
+          end
+        end,
+      })
     end,
   },
 
